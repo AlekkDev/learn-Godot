@@ -10,6 +10,8 @@ func _ready():
 	position = pos
 	#var test_rotation = 45
 	#rotation_degrees = test_rotation
+	$"..".test_function()
+	
 	
 	
 
