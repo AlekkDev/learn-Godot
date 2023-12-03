@@ -1,33 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dygk3qbm6gu6n"]
+[gd_scene load_steps=4 format=3 uid="uid://dygk3qbm6gu6n"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ye6qv"]
-[ext_resource type="Texture2D" uid="uid://5keivqyjdj5q" path="res://graphics/objects/gate.png" id="3_m8pjh"]
+[ext_resource type="PackedScene" uid="uid://dwuhex7i58mdg" path="res://scenes/objects/gate.tscn" id="2_176ji"]
 [ext_resource type="PackedScene" uid="uid://c7kfsd1vf3lah" path="res://scenes/player/player.tscn" id="4_615so"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf0cr"]
-size = Vector2(502, 160.5)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ye6qv")
 
-[node name="Gate" type="StaticBody2D" parent="."]
-
-[node name="Gate" type="Sprite2D" parent="Gate"]
-position = Vector2(550, -255)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_m8pjh")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gate"]
-polygon = PackedVector2Array(-311, -719, -309, 82, -304, 107, -292, 132, -273, 159, -251, 179, -228, 194, -200, 207, -166, 212, -97, 212, 0, 210, 331, 211, 330, 83, 843, 80, 846, 211, 1357, 210, 1394, 199, 1426, 178, 1448, 159, 1467, 134, 1485, 85, 1486, 55, 1484, -720)
-
-[node name="Area2D" type="Area2D" parent="Gate"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gate/Area2D"]
-position = Vector2(587, 181)
-shape = SubResource("RectangleShape2D_pf0cr")
+[node name="gate" parent="." instance=ExtResource("2_176ji")]
+position = Vector2(531, -158)
 
 [node name="Player" parent="." instance=ExtResource("4_615so")]
 position = Vector2(686, 483)
 
-[connection signal="body_entered" from="Gate/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Gate/Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[connection signal="player_entered_gate" from="gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
+[connection signal="laser" from="Player" to="." method="_on_player_laser"]
