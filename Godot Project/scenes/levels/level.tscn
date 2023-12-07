@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dygk3qbm6gu6n"]
+[gd_scene load_steps=18 format=3 uid="uid://dygk3qbm6gu6n"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ye6qv"]
 [ext_resource type="PackedScene" uid="uid://dwuhex7i58mdg" path="res://scenes/objects/gate.tscn" id="2_176ji"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bduhstvrn125h" path="res://graphics/decals/moss/moss_5.png" id="8_vdxo3"]
 [ext_resource type="Texture2D" uid="uid://cded8l0o7u4vq" path="res://graphics/tilesets/outside_walls.png" id="9_weamv"]
 [ext_resource type="Texture2D" uid="uid://cyyck2lod0r20" path="res://graphics/tilesets/soil.png" id="10_5cij6"]
+[ext_resource type="PackedScene" uid="uid://cassf4ssslkab" path="res://scenes/objects/steam_vent.tscn" id="11_utwvv"]
 [ext_resource type="PackedScene" uid="uid://knfxrypwgcbw" path="res://scenes/levels/house.tscn" id="13_ntw4d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5qrj"]
@@ -108,8 +109,17 @@ texture = ExtResource("8_vdxo3")
 position = Vector2(1091, 452)
 texture = ExtResource("8_vdxo3")
 
+[node name="SteamVent" parent="Ground" instance=ExtResource("11_utwvv")]
+position = Vector2(278, 508)
+scale = Vector2(0.7, 0.7)
+
 [node name="gate" parent="." instance=ExtResource("2_176ji")]
 position = Vector2(531, -158)
+
+[node name="house" parent="." instance=ExtResource("13_ntw4d")]
+position = Vector2(-207, 1314)
+rotation = -2.28464
+scale = Vector2(0.4, 0.4)
 
 [node name="Player" parent="." instance=ExtResource("4_615so")]
 position = Vector2(686, 483)
@@ -119,11 +129,6 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
-
-[node name="house" parent="." instance=ExtResource("13_ntw4d")]
-position = Vector2(-207, 1314)
-rotation = 3.99855
-scale = Vector2(0.4, 0.4)
 
 [connection signal="player_entered_gate" from="gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
