@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dygk3qbm6gu6n"]
+[gd_scene load_steps=19 format=3 uid="uid://dygk3qbm6gu6n"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ye6qv"]
 [ext_resource type="PackedScene" uid="uid://dwuhex7i58mdg" path="res://scenes/objects/gate.tscn" id="2_176ji"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cyyck2lod0r20" path="res://graphics/tilesets/soil.png" id="10_5cij6"]
 [ext_resource type="PackedScene" uid="uid://cassf4ssslkab" path="res://scenes/objects/steam_vent.tscn" id="11_utwvv"]
 [ext_resource type="PackedScene" uid="uid://knfxrypwgcbw" path="res://scenes/levels/house.tscn" id="13_ntw4d"]
+[ext_resource type="PackedScene" uid="uid://c5eamaad0cevq" path="res://scenes/objects/light_fan_animation.tscn" id="14_xtsw2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5qrj"]
 resource_name = "walls"
@@ -56,6 +57,7 @@ script = ExtResource("1_ye6qv")
 
 [node name="Soil" type="Sprite2D" parent="Ground"]
 texture_repeat = 2
+position = Vector2(-43, 10)
 texture = ExtResource("2_t2aqk")
 region_enabled = true
 region_rect = Rect2(-1735.94, -791.887, 6584.86, 3706.35)
@@ -110,16 +112,23 @@ position = Vector2(1091, 452)
 texture = ExtResource("8_vdxo3")
 
 [node name="SteamVent" parent="Ground" instance=ExtResource("11_utwvv")]
-position = Vector2(278, 508)
+position = Vector2(185, 366)
 scale = Vector2(0.7, 0.7)
+
+[node name="house" parent="Ground" instance=ExtResource("13_ntw4d")]
+position = Vector2(-207, 1670)
+rotation = -2.28464
+scale = Vector2(0.6, 0.6)
+
+[node name="LightFanAnimation" parent="Ground/house" instance=ExtResource("14_xtsw2")]
+position = Vector2(1849.44, 1092.69)
+rotation = 2.28464
+scale = Vector2(0.6, 0.6)
+frame_progress = 0.597648
 
 [node name="gate" parent="." instance=ExtResource("2_176ji")]
 position = Vector2(531, -158)
-
-[node name="house" parent="." instance=ExtResource("13_ntw4d")]
-position = Vector2(-207, 1314)
-rotation = -2.28464
-scale = Vector2(0.4, 0.4)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_615so")]
 position = Vector2(686, 483)
@@ -129,6 +138,11 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.027451, 0.0901961, 0.0470588, 1)
+energy = 1.5
+blend_mode = 1
 
 [connection signal="player_entered_gate" from="gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
