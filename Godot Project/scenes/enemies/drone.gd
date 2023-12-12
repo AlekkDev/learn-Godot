@@ -8,3 +8,6 @@ func _process(_delta):
 	velocity = direction * 400
 	#move and slide
 	move_and_slide()
+func hit():
+	print("hit")
+	

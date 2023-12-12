@@ -28,3 +28,10 @@ shape = SubResource("CapsuleShape2D_debnp")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 modulate = Color(0.388235, 1, 1, 1)
 occluder = SubResource("OccluderPolygon2D_er1mn")
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]

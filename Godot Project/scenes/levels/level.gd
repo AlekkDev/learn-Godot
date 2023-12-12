@@ -1,12 +1,13 @@
 extends Node2D
 
+class_name LevelParent
+
 var laser_scene = preload("res://scenes/projectiles/laser.tscn")
 var grenade_scene = preload("res://scenes/projectiles/grenade.tscn")
 
 
-func _on_gate_player_entered_gate(body):
-	print("world has entered the gate")
-	print(body)
+
+	
 
 
 func _on_player_grenade(pos,direction):
@@ -24,3 +25,16 @@ func _on_player_laser(pos,direction):
 	laser.direction = direction
 	$Projectiles.add_child(laser)
 	
+
+
+func _on_house_player_entered_house():
+	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	#tween.tween_property($Player,"modulate:a",0,2).from(0.5)
+	tween.tween_property($Player/Camera2D,"zoom", Vector2(1,1),1)
+
+
+func _on_house_player_exited_house():
+	var tween2 = get_tree().create_tween()
+	
+	tween2.tween_property($Player/Camera2D,"zoom", Vector2(0.6,0.6),2)
