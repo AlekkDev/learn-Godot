@@ -16,6 +16,7 @@ size = Vector2(1455, 248.5)
 
 [node name="Inside" instance=ExtResource("1_r2kg5")]
 script = ExtResource("2_vdqus")
+outside_level_scene = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground" index="0"]
 texture_repeat = 2

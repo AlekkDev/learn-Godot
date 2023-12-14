@@ -2,6 +2,7 @@ extends LevelParent
 
 #var outside_level_scene: PackedScene = preload("res://scenes/levels/outside.tscn")
 
+@export var outside_level_scene: PackedScene
 	
 func change_scene(scene_path: String) -> void:
 	get_tree().change_scene_to_file(scene_path)

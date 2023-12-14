@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dygk3qbm6gu6n"]
+[gd_scene load_steps=4 format=3 uid="uid://dygk3qbm6gu6n"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ye6qv"]
+[ext_resource type="PackedScene" uid="uid://bw7hqa0xssere" path="res://UserInterface/ui.tscn" id="3_v4ctf"]
 [ext_resource type="PackedScene" uid="uid://c7kfsd1vf3lah" path="res://scenes/player/player.tscn" id="4_615so"]
 
 [node name="Level" type="Node2D"]
@@ -23,6 +24,8 @@ energy = 1.5
 blend_mode = 1
 
 [node name="Lights" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("3_v4ctf")]
 
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
