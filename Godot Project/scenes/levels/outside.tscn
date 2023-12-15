@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnfltgp8ihqs4"]
+[gd_scene load_steps=15 format=3 uid="uid://cnfltgp8ihqs4"]
 
 [ext_resource type="PackedScene" uid="uid://dygk3qbm6gu6n" path="res://scenes/levels/level.tscn" id="1_upsnc"]
 [ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_r24f0"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bduhstvrn125h" path="res://graphics/decals/moss/moss_5.png" id="11_7ve0j"]
 [ext_resource type="PackedScene" uid="uid://cassf4ssslkab" path="res://scenes/objects/steam_vent.tscn" id="12_kp4mg"]
 [ext_resource type="PackedScene" uid="uid://knfxrypwgcbw" path="res://scenes/levels/house.tscn" id="13_two7k"]
-[ext_resource type="PackedScene" uid="uid://bw7hqa0xssere" path="res://UserInterface/ui.tscn" id="14_m0n21"]
 [ext_resource type="PackedScene" uid="uid://c5eamaad0cevq" path="res://scenes/objects/light_fan_animation.tscn" id="14_og07v"]
 
 [sub_resource type="TileSet" id="TileSet_ciapc"]
@@ -93,9 +92,5 @@ frame_progress = 0.597648
 
 [node name="gate" parent="." index="4" instance=ExtResource("2_xuj3f")]
 position = Vector2(552, -469)
-
-[node name="UI2" parent="." index="6" instance=ExtResource("14_m0n21")]
-scale = Vector2(5, 5)
-transform = Transform2D(5, 0, 0, 5, 0, 0)
 
 [connection signal="player_entered_gate" from="gate" to="." method="_on_gate_player_entered_gate"]
