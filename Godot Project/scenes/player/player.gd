@@ -9,19 +9,15 @@ signal grenade(pos, direction)
 @export var max_speed: int = 500
 var speed: int = max_speed
 
-
 func _process(_delta):
 	
 	#Movement
 	var direction = Input.get_vector("left","right","up","down")
 	velocity = direction *speed
 	move_and_slide()
-	
+	Globals.player_pos = global_position
 	#Rotate
 	look_at(get_global_mouse_position())
-	
-	
-	
 	
 	var projectile_direction = (get_global_mouse_position() - position).normalized()
 	#Primary action
@@ -50,3 +46,5 @@ func _on_timer_timeout():
 
 func _on_timer_2_timeout():
 	can_grenade = true
+	
+

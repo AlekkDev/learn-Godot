@@ -25,10 +25,11 @@ collision_mask = 31
 script = ExtResource("1_b5ds0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-35, 0)
+position = Vector2(-5, 5)
 shape = SubResource("CircleShape2D_1bqfw")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
+position = Vector2(31, 6)
 rotation = 1.5708
 texture = ExtResource("1_383su")
 
@@ -41,6 +42,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="LaserStartPositions" type="Node2D" parent="."]
+z_index = 2
 
 [node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
 position = Vector2(94, 19)
@@ -66,6 +68,7 @@ lifetime = 0.05
 one_shot = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(33, 9)
 occluder = SubResource("OccluderPolygon2D_ffemr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
