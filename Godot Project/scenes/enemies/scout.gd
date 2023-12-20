@@ -3,9 +3,21 @@ extends CharacterBody2D
 var player_nearby: bool = false
 var can_laser: bool = true
 var use_right_gun: bool = true
+var health: int = 30
+var immune: bool = false
 
 signal laser(pos,direction)
 
+func hit():
+	if not immune:
+		immune = not immune
+		print("scout hit")
+		health -= 10
+		if health <= 0:
+			queue_free()
+		$ImmunityTimer.start()
+			
+			
 
 func _process(_delta):
 	
@@ -31,3 +43,7 @@ func _on_attack_area_body_exited(_body):
 
 func _on_laser_cooldown_timeout():
 	can_laser  = true
+	
+
+func _on_immunity_timer_timeout():
+	immune = false

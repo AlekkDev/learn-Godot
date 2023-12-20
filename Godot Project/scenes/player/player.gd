@@ -9,6 +9,9 @@ signal grenade(pos, direction)
 @export var max_speed: int = 500
 var speed: int = max_speed
 
+func hit():
+	Globals.health -= 10
+
 func _process(_delta):
 	
 	#Movement

@@ -9,7 +9,7 @@ radius = 54.0093
 [sub_resource type="CircleShape2D" id="CircleShape2D_yamyx"]
 radius = 883.02
 
-[node name="Scout" type="CharacterBody2D" groups=["Scouts"]]
+[node name="Scout" type="CharacterBody2D" groups=["Entities", "Scouts"]]
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1_mnft6")
@@ -37,7 +37,12 @@ position = Vector2(80, -29)
 position = Vector2(87, 10)
 
 [node name="LaserCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="ImmunityTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="timeout" from="ImmunityTimer" to="." method="_on_immunity_timer_timeout"]

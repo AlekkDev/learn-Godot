@@ -204,6 +204,11 @@ visible = false
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_w2dke")
 
+[node name="Explosion" type="Sprite2D" parent="."]
+texture = ExtResource("3_xwxgn")
+hframes = 8
+vframes = 8
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u8vmm")
@@ -215,8 +220,3 @@ color = Color(1, 0.00784314, 0, 1)
 energy = 0.0
 texture = ExtResource("4_wqqdr")
 texture_scale = 0.03
-
-[node name="Explosion" type="Sprite2D" parent="."]
-texture = ExtResource("3_xwxgn")
-hframes = 8
-vframes = 8
