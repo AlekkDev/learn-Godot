@@ -10,12 +10,15 @@ signal laser(pos,direction)
 
 func hit():
 	if not immune:
-		immune = not immune
+		
 		print("scout hit")
 		health -= 10
-		if health <= 0:
-			queue_free()
+		immune = not immune
 		$ImmunityTimer.start()
+		$Sprite2D.material.set_shader_parameter('progress', 1)
+	if health <= 0:
+		queue_free()
+		
 			
 			
 
@@ -47,3 +50,4 @@ func _on_laser_cooldown_timeout():
 
 func _on_immunity_timer_timeout():
 	immune = false
+	$Sprite2D.material.set_shader_parameter('progress', 0)
