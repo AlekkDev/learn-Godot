@@ -176,7 +176,7 @@ scale_max = 1.3
 scale_curve = SubResource("CurveTexture_5byvf")
 anim_offset_max = 1.0
 
-[node name="Bug" type="CharacterBody2D" groups=["Entity"]]
+[node name="Bug" type="CharacterBody2D" groups=["Entities"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 11

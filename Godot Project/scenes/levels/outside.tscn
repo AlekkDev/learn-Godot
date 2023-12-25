@@ -13,9 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cassf4ssslkab" path="res://scenes/objects/steam_vent.tscn" id="12_kp4mg"]
 [ext_resource type="PackedScene" uid="uid://knfxrypwgcbw" path="res://scenes/levels/house.tscn" id="13_two7k"]
 [ext_resource type="PackedScene" uid="uid://c5eamaad0cevq" path="res://scenes/objects/light_fan_animation.tscn" id="14_og07v"]
+[ext_resource type="PackedScene" uid="uid://djch63jmtego0" path="res://scenes/enemies/drone.tscn" id="15_obuj7"]
 [ext_resource type="PackedScene" uid="uid://c55vmnlfkxvcg" path="res://container/crate.tscn" id="15_r15ps"]
 [ext_resource type="PackedScene" uid="uid://cw8161olxxqqj" path="res://container/toilet.tscn" id="16_00phe"]
-[ext_resource type="PackedScene" uid="uid://767k1x3csft0" path="res://scenes/enemies/bug.tscn" id="17_5pau1"]
 
 [sub_resource type="TileSet" id="TileSet_ciapc"]
 tile_size = Vector2i(390, 390)
@@ -96,8 +96,11 @@ frame_progress = 0.597648
 [node name="gate" parent="." index="4" instance=ExtResource("2_xuj3f")]
 position = Vector2(552, -469)
 
-[node name="Bug" parent="Enemies" index="0" instance=ExtResource("17_5pau1")]
-position = Vector2(1072, 227)
+[node name="drone" parent="Enemies" index="0" instance=ExtResource("15_obuj7")]
+position = Vector2(547, 402)
+
+[node name="Player" parent="." index="7"]
+position = Vector2(1068, 609)
 
 [node name="crate" parent="." index="8" instance=ExtResource("15_r15ps")]
 position = Vector2(928, 863)
