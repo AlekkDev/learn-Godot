@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cnfltgp8ihqs4"]
+[gd_scene load_steps=19 format=3 uid="uid://cnfltgp8ihqs4"]
 
 [ext_resource type="PackedScene" uid="uid://dygk3qbm6gu6n" path="res://scenes/levels/level.tscn" id="1_upsnc"]
 [ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_r24f0"]
@@ -13,12 +13,18 @@
 [ext_resource type="PackedScene" uid="uid://cassf4ssslkab" path="res://scenes/objects/steam_vent.tscn" id="12_kp4mg"]
 [ext_resource type="PackedScene" uid="uid://knfxrypwgcbw" path="res://scenes/levels/house.tscn" id="13_two7k"]
 [ext_resource type="PackedScene" uid="uid://c5eamaad0cevq" path="res://scenes/objects/light_fan_animation.tscn" id="14_og07v"]
-[ext_resource type="PackedScene" uid="uid://djch63jmtego0" path="res://scenes/enemies/drone.tscn" id="15_obuj7"]
 [ext_resource type="PackedScene" uid="uid://c55vmnlfkxvcg" path="res://container/crate.tscn" id="15_r15ps"]
 [ext_resource type="PackedScene" uid="uid://cw8161olxxqqj" path="res://container/toilet.tscn" id="16_00phe"]
+[ext_resource type="PackedScene" uid="uid://cjfheatxfc7pt" path="res://scenes/enemies/car.tscn" id="16_1b3w7"]
 
 [sub_resource type="TileSet" id="TileSet_ciapc"]
 tile_size = Vector2i(390, 390)
+
+[sub_resource type="Curve2D" id="Curve2D_gru7r"]
+_data = {
+"points": PackedVector2Array(-255.633, 16.8179, 255.633, -16.8179, 686, 470, -396.903, -184.997, 396.903, 184.997, 1885, 489, -285.905, -168.179, 285.905, 168.179, 2315, 744, -238.815, -47.0902, 238.815, 47.0902, 2771, 949, -420.448, -47.0902, 420.448, 47.0902, 3337, 1079, -272.45, 134.543, 272.45, -134.543, 4000, 975, -26.9087, 279.178, 26.9087, -279.178, 4260, 482, 30.2723, 164.816, -30.2723, -164.816, 4257, 60, 0, 0, 0, 0, 3870, -149, 221.997, -26.9087, -221.997, 26.9087, 3200, -159, 0, 0, 0, 0, 2813, 54, 168.179, -36.9994, -168.179, 36.9994, 2540, 228, 137.907, -10.0908, -137.907, 10.0908, 2140, 243, 0, 0, 0, 0, 1498, 241, 0, 0, 0, 0, 511, 219, 124.453, 141.271, -124.453, -141.271, 244, 111, 20.1815, 151.361, -20.1815, -151.361, 238, -581, 117.726, 73.9989, -117.726, -73.9989, 105, -845, 0, 0, 0, 0, -397, -819, 110.998, -43.7266, -110.998, 43.7266, -851, -727, -6.72717, -154.725, 6.72717, 154.725, -1048, -353, -73.9989, -40.363, 73.9989, 40.363, -892, -48, 0, 0, 0, 0, -359, 51, -67.2717, -50.4538, 67.2717, 50.4538, 19, 155, -57.181, -26.9087, 57.181, 26.9087, 324, 365, -144.634, -6.72717, 144.634, 6.72717, 685, 470)
+}
+point_count = 26
 
 [node name="Outside" instance=ExtResource("1_upsnc")]
 script = ExtResource("2_r24f0")
@@ -28,7 +34,7 @@ texture_repeat = 2
 position = Vector2(-43, 10)
 texture = ExtResource("3_8r7uo")
 region_enabled = true
-region_rect = Rect2(-1735.94, -791.887, 6584.86, 3706.35)
+region_rect = Rect2(-1735.94, -791.887, 10000, 10000)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground" index="1"]
 position = Vector2(-423, 842)
@@ -80,7 +86,7 @@ position = Vector2(1091, 452)
 texture = ExtResource("11_7ve0j")
 
 [node name="SteamVent" parent="Ground" index="12" instance=ExtResource("12_kp4mg")]
-position = Vector2(44, 168)
+position = Vector2(1511, 828)
 scale = Vector2(0.7, 0.7)
 
 [node name="house" parent="Ground" index="13" instance=ExtResource("13_two7k")]
@@ -94,13 +100,10 @@ rotation = 2.28464
 frame_progress = 0.597648
 
 [node name="gate" parent="." index="4" instance=ExtResource("2_xuj3f")]
-position = Vector2(552, -469)
-
-[node name="drone" parent="Enemies" index="0" instance=ExtResource("15_obuj7")]
-position = Vector2(547, 402)
+position = Vector2(1247, -469)
 
 [node name="Player" parent="." index="7"]
-position = Vector2(1068, 609)
+position = Vector2(1933, 481)
 
 [node name="crate" parent="." index="8" instance=ExtResource("15_r15ps")]
 position = Vector2(928, 863)
@@ -109,6 +112,13 @@ rotation = 3.14159
 [node name="Toilet" parent="." index="9" instance=ExtResource("16_00phe")]
 position = Vector2(1282, 862)
 rotation = 3.14159
+
+[node name="CarPath" type="Path2D" parent="." index="13"]
+curve = SubResource("Curve2D_gru7r")
+
+[node name="Car" parent="CarPath" index="0" instance=ExtResource("16_1b3w7")]
+position = Vector2(686, 470)
+rotation = -0.0656948
 
 [connection signal="player_entered_house" from="Ground/house" to="." method="_on_house_player_entered_house"]
 [connection signal="player_exited_house" from="Ground/house" to="." method="_on_house_player_exited_house"]
