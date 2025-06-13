@@ -118,7 +118,7 @@ curve = SubResource("Curve2D_gru7r")
 
 [node name="Car" parent="CarPath" index="0" instance=ExtResource("16_1b3w7")]
 position = Vector2(686, 470)
-rotation = -0.0656948
+rotation = -0.0656946
 
 [connection signal="player_entered_house" from="Ground/house" to="." method="_on_house_player_entered_house"]
 [connection signal="player_exited_house" from="Ground/house" to="." method="_on_house_player_exited_house"]

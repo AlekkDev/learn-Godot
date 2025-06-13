@@ -16,7 +16,7 @@ func _process(_delta):
 	
 	#Movement
 	var direction = Input.get_vector("left","right","up","down")
-	velocity = direction *speed
+	velocity = direction * speed
 	move_and_slide()
 	Globals.player_pos = global_position
 	#Rotate
@@ -32,6 +32,7 @@ func _process(_delta):
 		laser.emit(selected_laser.global_position, projectile_direction)
 		can_laser = false
 		$Timer.start()
+		#print(projectile_direction)
 		
 
 	if Input.is_action_pressed("secondary action") and can_grenade and Globals.grenade_amount > 0:
